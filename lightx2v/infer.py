@@ -6,6 +6,7 @@ import torch.distributed as dist
 from loguru import logger
 
 from lightx2v.common.ops import *
+from lightx2v.models.runners.bagel.bagel_runner import BagelRunner  # noqa: F401
 from lightx2v.models.runners.hunyuan_video.hunyuan_video_15_distill_runner import HunyuanVideo15DistillRunner  # noqa: F401
 from lightx2v.models.runners.hunyuan_video.hunyuan_video_15_runner import HunyuanVideo15Runner  # noqa: F401
 from lightx2v.models.runners.longcat_image.longcat_image_runner import LongCatImageRunner  # noqa: F401
@@ -17,7 +18,7 @@ from lightx2v.models.runners.wan.wan_distill_runner import WanDistillRunner  # n
 from lightx2v.models.runners.wan.wan_matrix_game2_runner import WanSFMtxg2Runner  # noqa: F401
 from lightx2v.models.runners.wan.wan_runner import Wan22MoeRunner, WanRunner  # noqa: F401
 from lightx2v.models.runners.wan.wan_sf_runner import WanSFRunner  # noqa: F401
-from lightx2v.models.runners.wan.wan_vace_runner import WanVaceRunner  # noqa: F401
+from lightx2v.models.runners.wan.wan_vace_runner import Wan22MoeVaceRunner, WanVaceRunner  # noqa: F401
 from lightx2v.models.runners.z_image.z_image_runner import ZImageRunner  # noqa: F401
 from lightx2v.utils.envs import *
 from lightx2v.utils.input_info import init_empty_input_info, update_input_info_from_dict
@@ -55,6 +56,7 @@ def main():
             "wan2.2_moe_audio",
             "wan2.2_audio",
             "wan2.2_moe_distill",
+            "wan2.2_moe_vace",
             "qwen_image",
             "longcat_image",
             "wan2.2_animate",
@@ -62,6 +64,7 @@ def main():
             "hunyuan_video_1.5_distill",
             "z_image",
             "ltx2",
+            "bagel",
         ],
         default="wan2.1",
     )
