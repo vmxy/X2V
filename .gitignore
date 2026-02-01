@@ -32,3 +32,4 @@ save_results/*
 *.egg-info/
 .deps/
 lightx2v_kernel/cutlass/
+__pycache__/
