@@ -33,3 +33,4 @@ save_results/*
 .deps/
 lightx2v_kernel/cutlass/
 __pycache__/
+gen_quant_model/
