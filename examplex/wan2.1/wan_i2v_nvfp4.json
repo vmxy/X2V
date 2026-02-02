@@ -1,0 +1,30 @@
+{
+    "infer_steps": 4,
+    "target_video_length": 81,
+    "target_height": 480,
+    "target_width": 832,
+    "self_attn_1_type": "flash_attn3",
+    "cross_attn_1_type": "flash_attn3",
+    "cross_attn_2_type": "flash_attn3",
+    "enable_cfg": false,
+    "sample_guide_scale": 7.5,
+    "sample_shift": 5,
+    "cpu_offload": true,
+    "dit_quantized": true,
+    "dit_quant_scheme": "nvfp4",
+    "dit_quantized_ckpt":"/data/ai-models/lightx2v/wan2.1/Wan-NVFP4/wan2.1_i2v_480p_nvfp4_lightx2v_4step.safetensors",
+    "t5_quantizedx": false,
+    "t5_quant_schemex": "",
+    "clip_quantizedx": false,
+    "clip_quant_schemex": "",
+    "tensor_parallel": false,
+    "cfg_parallel": false,
+    "seq_parallel": false,
+    "parallel": {
+        "pipe_parallel_size": 2,
+        "tensor_p_size": 1,
+        "seq_p_size": 1,
+        "seq_p_attn_type": "default",
+        "cfg_p_size": 1
+    }
+}

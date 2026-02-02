@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 os.environ["PROFILING_DEBUG_LEVEL"] = "2"
 os.environ["DTYPE"] = "BF16"
@@ -176,7 +177,7 @@ class LightX2VPipeline:
             platform_device = PLATFORM_DEVICE_REGISTER.get(os.getenv("PLATFORM", "cuda"), None)
             platform_device.init_parallel_env()
             set_parallel_config(config)
-
+        print(f"config={config}")
         self.runner = self._init_runner(config)
         print(self.runner.config)
         logger.info(f"Initializing {self.model_cls} runner for {self.task} task...")
@@ -427,8 +428,9 @@ class LightX2VPipeline:
         input_info = init_empty_input_info(self.task)
         seed_all(self.seed)
         update_input_info_from_dict(input_info, self)
+        start_time = time.time()
         self.runner.run_pipeline(input_info)
-        logger.info("Video generated successfully!")
+        logger.info(f"Video generated successfully! ttl={time.time() - start_time:.0f}s")
         logger.info(f"Video Saved in {save_result_path}")
 
     def _init_runner(self, config):

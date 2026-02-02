@@ -12,13 +12,12 @@
         3.5
     ],
     "dit_quantized": true,
-    "dit_quant_schemex": "nvfp4",
     "dit_quant_scheme": "fp8-torchao",
-    "high_noise_quantized_ckpt": "/data/ai-models/lightx2v/wan22/Wan2.2-Distill-Models/wan2.2_i2v_A14b_high_noise_scaled_fp8_e4m3_lightx2v_4step_1030.safetensors",
-    "low_noise_quantized_ckpt":"/data/ai-models/lightx2v/wan22/Wan2.2-Distill-Models/wan2.2_i2v_A14b_low_noise_scaled_fp8_e4m3_lightx2v_4step.safetensors",
-    "high_noise_quantized_ckptx": "/data/ai-models/lightx2v/wan22/Wan2.2-Distill-Models/wan2.2_i2v_A14b_high_noise_scaled_nvfp4_lightx2v_4step_0130.safetensors",
-    "low_noise_quantized_ckptx":"/data/ai-models/lightx2v/wan22/Wan2.2-Distill-Models/wan2.2_i2v_A14b_low_noise_scaled_nvfp4_lightx2v_4step_0130.safetensors",
-    "t5_original_ckpt_xxxxxx": "/data/ai-models/wan2.1/Wan2.1-I2V-14B-480P/models_t5_umt5-xxl-enc-bf16.pth",
+    "high_noise_quantized_ckpt": "/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_high_noise_scaled_fp8_e4m3_lightx2v_4step_1030.safetensors",
+    "low_noise_quantized_ckpt":"/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_low_noise_scaled_fp8_e4m3_lightx2v_4step.safetensors",
+    "high_noise_quantized_ckptx": "/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_high_noise_scaled_nvfp4_lightx2v_4step_0130.safetensors",
+    "low_noise_quantized_ckptx":"/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_low_noise_scaled_nvfp4_lightx2v_4step_0130.safetensors",
+    "t5_original_ckpt_xxxxxx": "/data/ai-models/commons/models_t5_umt5-xxl-enc-bf16.pth",
     "tensor_parallel": true,
     "parallel": {
         "seq_p_size": 1,

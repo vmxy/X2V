@@ -160,7 +160,9 @@ def main():
         # start to infer
         data = args.__dict__
         update_input_info_from_dict(input_info, data)
+        start_time=time.time()
         runner.run_pipeline(input_info)
+        print(f"gen video cost time={time.time() - start_time:.0f}s")
 
     # Clean up distributed process group
     if dist.is_initialized():
