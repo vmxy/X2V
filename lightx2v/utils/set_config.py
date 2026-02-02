@@ -131,7 +131,6 @@ def set_config(args):
 def set_parallel_config(config):
     if config["parallel"]:
         tensor_p_size = config["parallel"].get("tensor_p_size", 1)
-
         if tensor_p_size > 1:
             # Tensor parallel only: 1D mesh
             assert tensor_p_size == dist.get_world_size(), f"tensor_p_size ({tensor_p_size}) must be equal to world_size ({dist.get_world_size()})"
