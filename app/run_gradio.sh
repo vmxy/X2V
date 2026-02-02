@@ -14,11 +14,11 @@
 
 # Lightx2v project root directory path
 # Example: /home/user/lightx2v or /data/video_gen/lightx2v
-lightx2v_path=/data/video_gen/lightx2v_debug/LightX2V
+lightx2v_path=/data/code/vm/X2V
 
 # Model path configuration
 # Example: /path/to/Wan2.1-I2V-14B-720P-Lightx2v
-model_path=/models/
+model_path=/data/ai-models/lightx2v/wan2.2
 
 # Server configuration
 server_name="0.0.0.0"
@@ -168,7 +168,8 @@ echo "🔄 First startup may take several minutes to load resources..."
 echo "=========================================="
 
 # Start Python demo
-python $demo_file \
+export CUDA_VISIBLE_DEVICES=0,1
+torchrun --nproc_per_node=2 $demo_file \
     --model_path "$model_path" \
     --server_name "$server_name" \
     --server_port "$server_port" \

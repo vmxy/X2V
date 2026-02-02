@@ -163,6 +163,6 @@ def print_config(config):
     config_to_print.pop("device_mesh", None)
     if config["parallel"]:
         if dist.get_rank() == 0:
-            logger.info(f"config:\n{json.dumps(config_to_print, ensure_ascii=False, indent=4)}")
+            logger.info(f"config:\n{json.dumps(config_to_print, ensure_ascii=False, indent=4, default=lambda o: str(o))}")
     else:
-        logger.info(f"config:\n{json.dumps(config_to_print, ensure_ascii=False, indent=4)}")
+        logger.info(f"config:\n{json.dumps(config_to_print, ensure_ascii=False, indent=4, default=lambda o: str(o))}")

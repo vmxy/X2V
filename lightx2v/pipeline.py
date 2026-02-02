@@ -25,7 +25,7 @@ from lightx2v.models.runners.wan.wan_vace_runner import WanVaceRunner  # noqa: F
 from lightx2v.models.runners.z_image.z_image_runner import ZImageRunner  # noqa: F401
 from lightx2v.utils.input_info import init_empty_input_info, update_input_info_from_dict
 from lightx2v.utils.registry_factory import RUNNER_REGISTER
-from lightx2v.utils.set_config import set_config, set_parallel_config
+from lightx2v.utils.set_config import set_config, set_parallel_config, print_config
 from lightx2v.utils.utils import seed_all, validate_config_paths
 from lightx2v_platform.registry_factory import PLATFORM_DEVICE_REGISTER
 
@@ -177,7 +177,7 @@ class LightX2VPipeline:
             platform_device = PLATFORM_DEVICE_REGISTER.get(os.getenv("PLATFORM", "cuda"), None)
             platform_device.init_parallel_env()
             set_parallel_config(config)
-        print(f"config={config}")
+        print_config(config)
         self.runner = self._init_runner(config)
         print(self.runner.config)
         logger.info(f"Initializing {self.model_cls} runner for {self.task} task...")
@@ -430,7 +430,7 @@ class LightX2VPipeline:
         update_input_info_from_dict(input_info, self)
         start_time = time.time()
         self.runner.run_pipeline(input_info)
-        logger.info(f"Video generated successfully! ttl={time.time() - start_time:.0f}s")
+        logger.info(f"Video generated successfully! cost={time.time() - start_time:.0f}s")
         logger.info(f"Video Saved in {save_result_path}")
 
     def _init_runner(self, config):
