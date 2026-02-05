@@ -1,0 +1,46 @@
+{
+    "infer_steps": 4,
+    "target_fps": 16,
+    "target_height": 480,
+    "target_width": 832,
+    "video_duration": 360,
+    "audio_sr": 16000,
+    "target_video_length": 81,
+    "resize_mode": "adaptive",
+    "self_attn_1_type": "flash_attn2",
+    "cross_attn_1_type": "flash_attn2",
+    "cross_attn_2_type": "flash_attn2",
+    "sample_guide_scale": 1.0,
+    "sample_shift": 5,
+    "enable_cfg": false,
+    "cpu_offload": true,
+    "t5_cpu_offload": true,
+    "vae_cpu_offload": true,
+    "audio_encoder_cpu_offload": true,
+    "audio_adapter_cpu_offload": true,
+    "_use_31_block": true,
+    "offload_granularity": "block",
+    
+    "dit_quantized": true,
+    "dit_quant_scheme": "fp8-sgl",
+    "adapter_quantized": true,
+    "adapter_quant_scheme": "fp8-sgl",
+
+    "_dit_quantized": true,
+    "_dit_quant_scheme": "fp8-sgl",
+    "_dit_quantized_ckpt":"/data/ai-models/SekoTek-V2.5/SekoTalk-v2.5-fp8-step4.safetensors.safetensors",
+    "t5_quantized": true,
+    "t5_quant_scheme": "fp8-sgl",
+    "t5_quantized_ckpt":"/data/ai-models/c/encoders/models_t5_umt5-xxl-enc-fp8.safetensors",
+    "clip_quantized": true,
+    "clip_quant_scheme": "fp8-sgl",
+    "clip_quantized_ckpt": "/data/ai-models/c/encoders/models_clip_open-clip-xlm-roberta-large-vit-huge-14-fp8.safetensors",
+    
+    "parallel": {
+        "seq_p_size": 1,
+        "seq_p_attn_type": "ulysses",
+        "cfg_p_size": 2
+    },
+    "use_lightvae": true,
+    "vae_path": "/data/ai-models/c/vae/lightvaew2_1.safetensors"
+}

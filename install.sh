@@ -1,5 +1,14 @@
 #!/bin/bash
 
+sudo apt install -y \
+  libavdevice-dev \
+  libavformat-dev \
+  libavcodec-dev \
+  libavutil-dev \
+  libswscale-dev \
+  libswresample-dev \
+  pkg-config
+
 ## --python=3.11 torch=2.8 有flash-attn=2.8
 ## --python=3.12 torch=2.9 有flash-attn=2.8
 uv venv --python 3.12 .venv
@@ -8,6 +17,8 @@ mkdir -p .deps
 
 sed -i 's/VIRTUAL_ENV_PROMPT=.*/VIRTUAL_ENV_PROMPT="X2V"/g' .venv/bin/activate
 source .venv/bin/activate
+
+
 
 uv sync
 uv pip install torch torchaudio torchvision "torch~=$TORCH_VERSION"
@@ -58,11 +69,22 @@ cd ../
 #git clone https://github.com/Lightricks/LTX-Video-Q8-Kernels.git .deps/LTX-Video-Q8-Kernels
 #cd .deps/LTX-Video-Q8-Kernels
 #CFLAGS="-O2" CXXFLAGS="-O2" python setup.py install
-uv pip install vllm "torch~=$TORCH_VERSION"
-uv pip install sgl-kernel "torch~=$TORCH_VERSION"
+
 #git clone https://github.com/vllm-project/vllm.git .deps/vllm
 #cd .deps/vllm
 #uv pip install -e . "torch~=$TORCH_VERSION"
+uv pip install vllm "torch~=$TORCH_VERSION"
+uv pip install sgl-kernel "torch~=$TORCH_VERSION"
+
+#uv pip install -U torchcodec "torch~=$TORCH_VERSION" --no-build-isolation --index-url https://mirrors.nju.edu.cn/pytorch/whl/cu128 
+git clone https://github.com/meta-pytorch/torchcodec.git .deps/torchcodec
+cd .deps/torchcodec
+uv pip install pybind11 "torch~=$TORCH_VERSION"
+export pybind11_DIR=$(python -m pybind11 --cmakedir)
+CFLAGS="-O2" CXXFLAGS="-O2" python setup.py install
+cd ../../
+
+
 
 python << EOF
 
@@ -112,4 +134,6 @@ try:
   print(f"install q8_kernels")
 except ImportError:
   print(f"no install q8_kernels")
+
 EOF
+

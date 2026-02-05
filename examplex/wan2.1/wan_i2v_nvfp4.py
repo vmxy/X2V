@@ -13,7 +13,12 @@ pipe = LightX2VPipeline(
     model_cls="wan2.1",
     task="i2v",
 )
-
+pipe.enable_lightvae(
+    use_lightvae=False,
+    vae_path=None,
+    use_tae=False,
+    tae_path=None
+)
 # Alternative: create generator from config JSON file
 # pipe.create_generator(
 #     config_json="../configs/wan22/wan_moe_i2v.json"
