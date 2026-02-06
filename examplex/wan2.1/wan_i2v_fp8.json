@@ -15,7 +15,7 @@
     
     "dit_quantized": true,
     "dit_quant_scheme": "fp8-sgl",
-    "dit_quantized_ckpt":"/data/ai-models/lightx2v/wan2.1_i2v_14b_480p_scaled_fp8.safetensors",
+    "dit_quantized_ckpt":"/data/ai-models/lightx2v/wan2.1/wan2.1_i2v_14b_480p_scaled_fp8.safetensors",
   
     "t5_quantized": true,
     "t5_quant_scheme": "fp8-sgl",

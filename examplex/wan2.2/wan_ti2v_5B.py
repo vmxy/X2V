@@ -2,7 +2,7 @@
 an2.1 image-to-video generation example.
 This example demonstrates how to use LightX2V with Wan2.1 model for I2V generation.
 """
-
+import torch
 import random
 import time
 from lightx2v import LightX2VPipeline
@@ -35,6 +35,7 @@ pipe.enable_parallel(
     cfg_p_size=2,
 ) 
  """
+
 pipe.enable_lightvae(
     use_tae=True,
     tae_path="/data/ai-models/commons/vae/lighttaew2_1.pth",
