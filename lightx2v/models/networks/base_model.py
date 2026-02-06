@@ -42,7 +42,8 @@ class BaseTransformerModel(CompiledMethodsMixin, ABC):
     pre_weight_class = None
     transformer_weight_class = None
     post_weight_class = None
-
+    remove_keys = []
+    sensitive_layer = {}
     def __init__(self, model_path, config, device, model_type=None, lora_path=None, lora_strength=1.0):
         """Initialize the base transformer model.
 

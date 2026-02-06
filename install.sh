@@ -18,7 +18,8 @@ mkdir -p .deps
 sed -i 's/VIRTUAL_ENV_PROMPT=.*/VIRTUAL_ENV_PROMPT="X2V"/g' .venv/bin/activate
 source .venv/bin/activate
 
-
+# wan2.2-animate使用
+uv pip install moviepy sam2 matplotlib onnxruntime
 
 uv sync
 uv pip install torch torchaudio torchvision "torch~=$TORCH_VERSION"
