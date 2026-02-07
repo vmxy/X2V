@@ -1,13 +1,13 @@
 {
-    "infer_steps": 20,
-    "target_video_length": 77,
+    "infer_steps": 10,
+    "target_video_length": 81,
     "text_len": 512,
     "target_height": 480,
     "target_width": 832,
     "self_attn_1_type": "flash_attn2",
     "cross_attn_1_type": "flash_attn2",
     "cross_attn_2_type": "flash_attn2",
-    "adapter_attn_type": "flash_attn2",
+    "adapter_attn_type": "sage_attn2",
     "sample_shift": 5.0,
     "sample_guide_scale": 5.0,
     "enable_cfg": false,
@@ -17,7 +17,7 @@
     "replace_flag": false,
     "fps": 16,
     "use_lightvae": true,
-    "vae_path": "/data/ai-models/commons/vae/lightvaew2_1.pth",
+    "vae_path": "/data/ai-models/c/vae/lightvaew2_1.safetensors",
     "t5_quantized": true,
     "t5_quant_scheme": "fp8-sgl",
     "t5_quantized_ckpt":"/data/ai-models/c/encoders/models_t5_umt5-xxl-enc-fp8.safetensors",
@@ -26,5 +26,12 @@
     "clip_quantized_ckpt": "/data/ai-models/c/encoders/models_clip_open-clip-xlm-roberta-large-vit-huge-14-fp8.safetensors",
     "dit_quantized": true,
     "dit_quant_scheme": "fp8-sgl",
-    "dit_quantized_ckpt":"/data/ai-models/lightx2v/wan2.2/wan2.2_animate_14b_scaled-fp8.safetensors"
+    "dit_quantized_ckpt":"/data/ai-models/lightx2v/wan2.2/wan2.2_animate_14b_scaled-fp8.safetensors",
+    "tensor_parallel": true,
+    "parallel": {
+        "tensor_p_size": 2,
+        "seq_p_size": 1,
+        "seq_p_attn_type": "ulysses",
+        "cfg_p_size": 2
+    }
 }

@@ -322,6 +322,7 @@ def quantize_model(
     non_linear_dtype=torch.float,
     comfyui_mode=False,
     comfyui_keys=[],
+    model_type="wan_dit"
 ):
     """
     Quantize model weights in-place
@@ -379,6 +380,18 @@ def quantize_model(
                         non_quantized_size += tensor.numel() * tensor.element_size()
                 else:
                     non_quantized_size += tensor.numel() * tensor.element_size()
+                    if model_type == "wan_animate_dit" and "face_adapter" in key and key.endswith(".weight"):
+                        # Quantize tensor and store results
+                        quantizer = CONVERT_WEIGHT_REGISTER[linear_type](tensor)
+                        w_q, scales, extra = quantizer.weight_quant_func(tensor, comfyui_mode)
+                        #weight_global_scale = extra.get("weight_global_scale", None)  # For nvfp4
+                        # Replace original tensor and store scales
+                        print(f"wan_animate_dit >face_adapter> key={key} dtype={tensor.dtype}>{w_q.dtype} scale={scales.shape} {scales.dtype} ")
+                        weights[key] = w_q
+                        if comfyui_mode:
+                            weights[key.replace(".weight", ".scale_weight")] = scales
+                        else:
+                            weights[key + "_scale"] = scales
                 continue
 
             # try:
@@ -599,6 +612,7 @@ def convert_weights(args):
                 non_linear_dtype=args.non_linear_dtype,
                 comfyui_mode=args.comfyui_mode,
                 comfyui_keys=args.comfyui_keys,
+                model_type=args.model_type,
             )
 
     os.makedirs(args.output, exist_ok=True)

@@ -23,7 +23,7 @@ echo "=== process input resource ==="
 #    --retarget_flag     
 
 echo "=== ai task animate start ==="
-python -m lightx2v.infer \
+torchrun --nproc_per_node=2 -m lightx2v.infer \
 --model_cls wan2.2_animate \
 --task animate \
 --model_path $model_path \
