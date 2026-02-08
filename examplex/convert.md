@@ -20,7 +20,7 @@ python tools/convert/quant_adapter.py \
 python tools/convert/converter.py \
     --device cpu \
     --source /data/ai-models/wan2.1/Wan2.1-I2V-14B-480P \
-    --output checkpoints/wan2.1 \
+    --output /data/ai-models/lightx2v/wan2.1 \
     --output_ext .safetensors \
     --output_name wan2.1_i2v_14b_480p_scaled-fp8 \
     --linear_type fp8 \
@@ -30,7 +30,19 @@ python tools/convert/converter.py \
     --copy_no_weight_files \
     --single_file  
 
-
+## 把模型Wan2.1-I2V-14B-480P量化为nvfp4
+python tools/convert/converter.py \
+    --device cpu \
+    --source /data/ai-models/wan2.1/Wan2.1-I2V-14B-480P \
+    --output /data/ai-models/lightx2v/wan2.1 \
+    --output_ext .safetensors \
+    --output_name wan2.1_i2v_14b_480p_scaled_nvfp4 \
+    --linear_type nvfp4 \
+    --non_linear_dtype torch.bfloat16 \
+    --model_type wan_dit \
+    --quantized \
+    --copy_no_weight_files \
+    --single_file  
 ```
 
 

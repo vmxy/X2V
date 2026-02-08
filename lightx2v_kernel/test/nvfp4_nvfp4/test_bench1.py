@@ -105,14 +105,14 @@ def test_nvfp4_gemm(
 
     a_global_scale = ((FLOAT8_E4M3_MAX * FLOAT4_E2M1_MAX) / torch.amax(a_dtype.flatten(), dim=-1)).to(torch.float32)
     b_global_scale = ((FLOAT8_E4M3_MAX * FLOAT4_E2M1_MAX) / torch.amax(b_dtype.flatten(), dim=-1)).to(torch.float32)
-
-    print(f"a_global_scale : {a_global_scale}, {a_global_scale.shape}")
-    print(f"b_global_scale : {b_global_scale}, {b_global_scale.shape}")
+    print(f"max={FLOAT8_E4M3_MAX * FLOAT4_E2M1_MAX}")
+    print(f"a_global_scale : {a_global_scale}, {a_global_scale.shape} FLOAT8_E4M3_MAX={FLOAT8_E4M3_MAX} FLOAT4_E2M1_MAX={FLOAT4_E2M1_MAX}")
+    print(f"b_global_scale : {b_global_scale}, {b_global_scale.shape} max={ torch.amax(a_dtype.flatten(), dim=-1)}")
 
     alpha = 1.0 / (a_global_scale * b_global_scale)
     a_fp4, a_scale_interleaved = scaled_nvfp4_quant(a_dtype, a_global_scale)
     b_fp4, b_scale_interleaved = scaled_nvfp4_quant(b_dtype, b_global_scale)
-
+    print(f"a_fp4={a_fp4} b_fp4={b_fp4}")
     expected_out = get_ref_results(
         a_fp4,
         b_fp4,

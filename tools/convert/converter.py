@@ -340,11 +340,10 @@ def quantize_model(
     quantized_size = 0
     non_quantized_size = 0
     keys = list(weights.keys())
-
+    pattern_nvfp4_incre = re.compile(r'_attn\.(k|o|q|v)(_img)?\.weight$') # r表示原始字符串，避免转义问题
     with tqdm(keys, desc="Quantizing weights") as pbar:
         for key in pbar:
             pbar.set_postfix(current_key=key, refresh=False)
-
             if ignore_key is not None and any(ig_key in key for ig_key in ignore_key):
                 del weights[key]
                 continue
@@ -402,7 +401,7 @@ def quantize_model(
             quantizer = CONVERT_WEIGHT_REGISTER[linear_type](tensor)
             w_q, scales, extra = quantizer.weight_quant_func(tensor, comfyui_mode)
             weight_global_scale = extra.get("weight_global_scale", None)  # For nvfp4
-
+            input_absmax =  extra.get("input_absmax", None)  # For nvfp4
             # Replace original tensor and store scales
             weights[key] = w_q
             if comfyui_mode:
@@ -411,6 +410,8 @@ def quantize_model(
                 weights[key + "_scale"] = scales
             if weight_global_scale:
                 weights[key + "_global_scale"] = weight_global_scale
+            if input_absmax:
+                weights[key.replace(".weight", ".input_absmax")] = input_absmax
 
             quantized_tensor_size = w_q.numel() * w_q.element_size()
             scale_size = scales.numel() * scales.element_size()

@@ -134,8 +134,12 @@ class QuantWeightNVFP4(QuantTemplate):
     def load_fp4_weight(self, w, comfyui_mode=False):
         device = w.device
         w = w.cuda().to(torch.bfloat16)
-        weight_global_scale = (2688.0 / torch.max(torch.abs(w))).to(torch.float32)
+        # 计算权重的统计信息
+        w_absmax = torch.max(torch.abs(w)).to(torch.float32)
+        # weight_global_scale = (2688.0 / torch.max(torch.abs(w))).to(torch.float32)
+        weight_global_scale = 2688.0 / w_absmax
         w_q, scales = scaled_nvfp4_quant(w, weight_global_scale)
         w_q, scales = w_q.to(device), scales.to(device)
         self.extra["weight_global_scale"] = weight_global_scale.to(device)
+        self.extra["input_absmax"] = w_absmax.to(device)
         return w_q, scales, self.extra

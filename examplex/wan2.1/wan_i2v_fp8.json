@@ -1,5 +1,5 @@
 {
-    "infer_steps": 6,
+    "infer_steps": 8,
     "target_video_length": 81,
     "fps": 16,
     "target_height": 480,
