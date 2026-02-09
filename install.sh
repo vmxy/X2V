@@ -135,6 +135,10 @@ try:
   print(f"install q8_kernels")
 except ImportError:
   print(f"no install q8_kernels")
-
+try:
+  import diffusers 
+  print(f"diffusers installed {diffusers.__version__}")
+except ImportError:
+  print(f"no install diffusers")
 EOF
 
