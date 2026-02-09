@@ -1,5 +1,5 @@
 {
-    "infer_steps": 5,
+    "infer_steps": 4,
     "target_fps": 16,
     "video_duration": 360,
     "audio_sr": 16000,
@@ -48,11 +48,11 @@
     "sample_shift": 5,
     "enable_cfg": false,
     "cpu_offload": true,
-    "t5_cpu_offload": true,
-    "vae_cpu_offload": true,
-    "audio_encoder_cpu_offload": true,
-    "audio_adapter_cpu_offload": true,
-    "_use_31_block": true,
+    "t5_cpu_offload": false,
+    "vae_cpu_offload": false,
+    "audio_encoder_cpu_offload": false,
+    "audio_adapter_cpu_offload": false,
+    "use_31_block": true,
     "offload_granularity": "block",
     
     "dit_quantized": true,

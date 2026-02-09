@@ -1,0 +1,37 @@
+{
+    "infer_steps": 20,
+    "target_video_length": 81,
+    "fps": 16,
+    "target_height": 480,
+    "target_width": 832,
+    "self_attn_1_type": "sage_attn3",
+    "cross_attn_1_type": "sage_attn3",
+    "cross_attn_2_type": "sage_attn3",
+    "enable_cfg": false,
+    "sample_guide_scale": 5,
+    "sample_shift": 5,
+    "cpu_offload": true,
+    "offload_granularity": "block",
+    
+    "dit_quantized": true,
+    "dit_quant_scheme": "nvfp4",
+    "dit_quantized_ckpt":"/data/ai-models/lightx2v/wan2.1/wan2.1_i2v_14b_480p_scaled_nvfp4.safetensors",
+  
+    "t5_quantized": true,
+    "t5_quant_scheme": "fp8-sgl",
+    "t5_quantized_ckpt":"/data/ai-models/c/encoders/models_t5_umt5-xxl-enc-fp8.safetensors",
+    "clip_quantized": true,
+    "clip_quant_scheme": "fp8-sgl",
+    "clip_quantized_ckpt": "/data/ai-models/c/encoders/models_clip_open-clip-xlm-roberta-large-vit-huge-14-fp8.safetensors",
+    "tensor_parallel": true,
+    "cfg_parallel": true,
+    "seq_parallel": false,
+    "parallel": {
+        "tensor_p_size": 2,
+        "seq_p_size": 2,
+        "seq_p_attn_type": "ulysses",
+        "cfg_p_size": 1
+    },
+    "use_lightvae": true,
+    "vae_path": "/data/ai-models/c/vae/lightvaew2_1.safetensors"
+}
