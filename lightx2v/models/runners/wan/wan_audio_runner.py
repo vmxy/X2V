@@ -872,6 +872,7 @@ class Wan22AudioRunner(WanAudioRunner):
             "device": vae_device,
             "cpu_offload": vae_offload,
             "offload_cache": self.config.get("vae_offload_cache", False),
+            "dtype": GET_DTYPE(),
         }
         vae_decoder = Wan2_2_VAE(**vae_config)
         return vae_decoder
@@ -888,6 +889,7 @@ class Wan22AudioRunner(WanAudioRunner):
             "device": vae_device,
             "cpu_offload": vae_offload,
             "offload_cache": self.config.get("vae_offload_cache", False),
+            "dtype": GET_DTYPE(),
         }
         if self.config.task not in ["i2v", "s2v", "rs2v"]:
             return None

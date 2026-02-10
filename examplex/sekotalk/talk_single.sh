@@ -20,16 +20,16 @@ source ${lightx2v_path}/scripts/base/base.sh
 #--audio_path ${lightx2v_path}/assets/inputs/audio/multi_person \
 #--save_result_path ${lightx2v_path}/save_results/seko_talk_multi_person_dist_fp8_v10.mp4
 
-
-torchrun --nproc-per-node 2 -m lightx2v.infer \
+#torchrun --nproc-per-node 2
+python -m lightx2v.infer \
 --model_cls seko_talk \
 --task s2v \
 --model_path $model_path \
 --config_json ${lightx2v_path}/examplex/sekotalk/talk_single.json \
 --prompt  "The video features a female speaking to the camera with arms spread out, a slightly furrowed brow, and a focused gaze, Generate a stage, appropriately scale the person down and place them in the center of the stage, occupying about 30% of the space. The camera should circle around the person as they act drunk." \
 --negative_prompt 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走 \
---audio_path /data/speakers/girl2/girl2-10s.mp3 \
---image_path /data/downloads/singer5.jpg \
+--image_path ${lightx2v_path}/assets/inputs/audio/seko_input.png  \
+--audio_path ${lightx2v_path}/assets/inputs/audio/seko_input.mp3 \
 --save_result_path ${lightx2v_path}/save_results/singer5_v3.mp4
 
 echo "finished"
