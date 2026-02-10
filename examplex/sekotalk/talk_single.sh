@@ -20,8 +20,7 @@ source ${lightx2v_path}/scripts/base/base.sh
 #--audio_path ${lightx2v_path}/assets/inputs/audio/multi_person \
 #--save_result_path ${lightx2v_path}/save_results/seko_talk_multi_person_dist_fp8_v10.mp4
 
-#torchrun --nproc-per-node 2
-python -m lightx2v.infer \
+torchrun --nproc-per-node 2 -m lightx2v.infer \
 --model_cls seko_talk \
 --task s2v \
 --model_path $model_path \
