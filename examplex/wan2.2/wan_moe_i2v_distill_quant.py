@@ -59,7 +59,17 @@ pipe.create_generator(
 )
 print(f"======================= create pipe cost={time.time() - start_time:.0f}s =======================")
 seed = 49
-prompt="Summer beach vacation style, a white cat wearing sunglasses sits on a surfboard. The fluffy-furred feline gazes directly at the camera with a relaxed expression. Blurred beach scenery forms the background featuring crystal-clear waters, distant green hills, and a blue sky dotted with white clouds. The cat assumes a naturally relaxed posture, as if savoring the sea breeze and warm sunlight. A close-up shot highlights the feline's intricate details and the refreshing atmosphere of the seaside."
+prompt="""
+#### Scene 1: Palm Touching the Talisman (4 seconds)
+**Prompt:** A young cultivator named Han Li in ancient robes sits in a dimly lit bamboo hut, his palm gently touching a glowing jade peace talisman on a wooden table. Close-up on the hand: a refreshing, ethereal blue energy wave spreads from the talisman into his skin, symbolizing a penetrating clear-minded sensation entering his body and mind. Camera slowly zooms in on the contact point, soft volumetric light highlights the calming aura, no dialogue, serene ambient glow.
+**Shot:** Extreme close-up on hand, subtle energy effect for detail.
+**Transition:** Fade to wide shot.
+
+#### Scene 2: Inner Calm Restored (5 seconds)
+**Prompt:** Han Li's agitated face relaxes instantly in the hut, eyes closing briefly as inner turmoil fades. Medium shot: waves of dark misty energy (representing depression and discomfort) dissipate from his body like smoke, all abnormal phenomena vanishing—heart rate slows, muscles unclench. Background shows flickering candlelight stabilizing, conveying total peace and normalcy restored. Cinematic style with gentle pan down his torso, soft blue hues for tranquility.
+**Shot:** Medium close-up on face and upper body, focus on emotional shift.
+**Transition:** Smooth dissolve.
+"""
 negative_prompt="色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
 save_result_path=f"save_results/wan_moe_i2v_distill-cat-{seed}.mp4"
 image_path="assets/inputs/imgs/img_0.jpg"

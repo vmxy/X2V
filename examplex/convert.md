@@ -77,3 +77,18 @@ python tools/convert/converter.py \
     --single_file  
 
 ```
+
+## 量化 Wan2.2-TI2V-5B 为fp8
+python tools/convert/converter.py \
+    --device cpu \
+    --source /data/ai-models/wan2.2/Wan2.2-TI2V-5B \
+    --output /data/ai-models/lightx2v/wan2.2 \
+    --output_ext .safetensors \
+    --output_name wan2.2_ti2v_5b_scaled_fp8 \
+    --linear_type fp8 \
+    --non_linear_dtype torch.bfloat16 \
+    --model_type wan_dit \
+    --quantized \
+    --single_file  
+
+```

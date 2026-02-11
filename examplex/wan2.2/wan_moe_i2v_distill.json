@@ -1,9 +1,7 @@
 {
-    "infer_steps": 8,
+    "infer_steps": 4,
     "target_video_length": 81,
-    "total_fps": 81,
-    "fps": 16,
-    "text_len": 5120,
+    "text_len": 512,
     "target_height": 480,
     "target_width": 832,
     "self_attn_1_type": "sage_attn3",
@@ -25,6 +23,8 @@
     "dit_quant_scheme": "fp8-sgl",
     "high_noise_quantized_ckpt": "/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_high_noise_scaled_fp8_e4m3_lightx2v_4step_1030.safetensors",
     "low_noise_quantized_ckpt":"/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_low_noise_scaled_fp8_e4m3_lightx2v_4step.safetensors",
+    "high_noise_quantized_ckptx": "/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_high_noise_scaled_nvfp4_lightx2v_4step_0130.safetensors",
+    "low_noise_quantized_ckptx":"/data/ai-models/lightx2v/wan2.2/Wan2.2-Distill-Models/wan2.2_i2v_A14b_low_noise_scaled_nvfp4_lightx2v_4step_0130.safetensors",
 
     "t5_quantized": true,
     "t5_quant_scheme": "fp8-sgl",
