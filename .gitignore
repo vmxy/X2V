@@ -35,3 +35,5 @@ save_results/*
 lightx2v_kernel/cutlass/
 __pycache__/
 gen_quant_model/
+.venv/
+.venv*

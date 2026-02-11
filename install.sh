@@ -12,6 +12,7 @@ sudo apt install -y \
 ## --python=3.11 torch=2.8 有flash-attn=2.8
 ## --python=3.12 torch=2.9 有flash-attn=2.8
 uv venv --python 3.12 .venv
+# uv venv --python 3.12 .venv-local  # 本地环境使用(代码开发，不是运行)
 TORCH_VERSION=2.9.1
 mkdir -p .deps
 
