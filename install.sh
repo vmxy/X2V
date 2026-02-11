@@ -16,11 +16,12 @@ uv venv --python 3.12 .venv
 TORCH_VERSION=2.9.1
 mkdir -p .deps
 
-sed -i 's/VIRTUAL_ENV_PROMPT=.*/VIRTUAL_ENV_PROMPT="X2V"/g' .venv/bin/activate
+sed -i 's/VIRTUAL_ENV_PROMPT=.*/VIRTUAL_ENV_PROMPT="x2v"/g' .venv/bin/activate
 source .venv/bin/activate
 
 # wan2.2-animate使用
-uv pip install moviepy sam2 matplotlib onnxruntime
+#uv pip install moviepy sam2 matplotlib onnxruntime "torch~=$TORCH_VERSION"
+
 
 uv sync
 uv pip install torch torchaudio torchvision "torch~=$TORCH_VERSION"
@@ -48,10 +49,10 @@ CFLAGS="-O2" CXXFLAGS="-O2" python setup.py install
 cd ../../../
 
 ## 安装 spas_sage_attn 
-git clone https://github.com/thu-ml/SpargeAttn.git .deps/SpargeAttn
-cd .deps/SpargeAttn
-CFLAGS="-O2" CXXFLAGS="-O2" python setup.py install
-
+#git clone https://github.com/thu-ml/SpargeAttn.git .deps/SpargeAttn
+#cd .deps/SpargeAttn
+#CFLAGS="-O2" CXXFLAGS="-O2" python setup.py install
+#cd ../../
 
 ## 2. Install NVFP4 Kernel
 uv pip install scikit_build_core
