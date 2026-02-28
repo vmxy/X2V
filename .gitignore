@@ -15,6 +15,7 @@
 .idea
 **.DS_Store**
 **/__pycache__/**
+__pycache__
 **.swp
 .vscode/
 .env
@@ -31,3 +32,8 @@ app/.gradio/
 save_results/*
 *.egg-info/
 .deps/
+lightx2v_kernel/cutlass/
+__pycache__/
+gen_quant_model/
+.venv/
+.venv*
